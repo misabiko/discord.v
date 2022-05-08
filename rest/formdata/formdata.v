@@ -32,7 +32,7 @@ struct FormFile {
 pub mut:
 	filename     string
 	content_type string = 'application/octet-stream'
-	data         []byte
+	data         []u8
 }
 
 // FormData represents multipart/form-data
@@ -56,7 +56,7 @@ pub fn (mut f FormData) add(name string, text string) {
 }
 
 // Add file field
-pub fn (mut f FormData) add_file(name string, filename string, data []byte) {
+pub fn (mut f FormData) add_file(name string, filename string, data []u8) {
 	ext := os.file_ext(filename)
 	if ext in formdata.mime_types {
 		f.fields[name] = FormFile{

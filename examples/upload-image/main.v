@@ -30,7 +30,7 @@ fn img(mut client vd.Client, evt &vd.MessageCreate) {
 		client.channel_message_send(evt.channel_id,
 			file: vd.File{
 				filename: 'v-logo.png'
-				data: &[]byte(client.userdata)
+				data: &[]u8(client.userdata)
 			}
 		) or {}
 	}
